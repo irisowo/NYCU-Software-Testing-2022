@@ -6,3 +6,29 @@
 	- target.cfg : 用來找位置的 cfg 圖片
 	- solve.py : 執行 angr 的 python (please use python3)
 	- flag.txt : 正確的參數輸入 (argv[1])
+
+---  
+
+# Note
+
+## Env
+```bash
+cd ./Lab_8
+docker pull angr/angr # not recommended since it is large ==
+
+# Get docker file from https://github.com/angr/angr-dev
+docker build -t angr - < share/Dockerfile --no-cache 
+```
+
+## Run docker
+```bash
+sudo docker run -v $PWD/share:/home/lab8/ -it angr /bin/bash
+# In container
+cd /home/lab8/
+```
+
+## Other 
+```bash
+docker run -ti -v [location of src code]:/code aflplusplus/aflplusplus
+docker start -i [container_id]
+```
