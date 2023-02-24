@@ -1,21 +1,32 @@
-# Hw2
-## [a]
-* List all of the input variables including the state variables.
-    * 1. capacity
-        * the input of constructor, which signifies the queue's capacity
-    * 2. X
-        * the input of enQueue(), which is if the element type of the queue(that is, object o).
-    * 3. state
-        * state can be considered as the state of the queue's iterator
-    * Summary 
-| |variables|
-| -------- |------- |
-| input varables : | capacity, X | 
-| state varables : | state | 
+## Homework 2: Input Space Partitioning for BoundedQueue
+Derive input space partitioning test inputs for the BoundedQueue class with the following method signatures:
 
-## [b]
-* Define the characteristics of the input variables. 
-    * should cover all input variables.
+* public BoundedQueue(int capacity); // The Maximum number of elements
+* public void enQueue(Object X);
+* public Object deQueue();
+* public boolean isEmpty();
+* public boolean isFull();
+
+Assume the usual semantics for a queue with a fixed, maximal capacity. Try to keep your partitioning simple -- choose a small number of partitions and blocks.
+
+---
+
+#### **(a)** List all of the input variables including the state variables.
+1. capacity
+    * the input of constructor, which signifies the queue's capacity
+2. X
+    * the input of enQueue(), which is if the element type of the queue(that is, object o).
+3. state
+    * state can be considered as the state of the queue's iterator
+* Summary 
+    ||variables|
+    | -------- |------- |
+    | input varables : | capacity, X | 
+    | state varables : | state | 
+
+<br/>
+
+#### **(b)** Define the characteristics of the input variables (should cover all input variables)
 
 |Method      |Params        |Returns|Values|Exception               |ChID |Characteristic| Covered by|
 |------------|--------------|-------|------|------------------------|-----|--------------|----|
@@ -30,11 +41,9 @@
 |isEmpty     |state         |boolean| T, F  |                       | C6  |queue is empty|    |
 |isFull      |state         |boolean| T, F  |                       | C7  |queue is full |    |
 
+<br/>
 
-
-## [c]
-* Partition the characteristics into blocks. 
-    * Designate one block in each partition as the "Base" block. 
+#### **(c)** Partition the characteristics into blocks. (Designate one block in each partition as the "Base" block) 
 
 |ID|Characteristic                         |BoundedQueue(int capacity)|enQueue(Object o)|deQueue()|isEmpty()|isFull()|
 |-|-|-|-|-|-|-| 
@@ -45,9 +54,10 @@
 |C5|Remove and return oldest element of queue|          |       |   V   |       |      |
 |C6|If queue is empty                      |            |       |   V   |   V   |      |
 |C7|If queue is full                       |            |   V   |       |       |  V   |
- 
-## [d]
-* Define values for each block.
+
+<br/>
+
+#### **(d)** Define values for each block.
 
 | ID  |   | Values |
 |---|---|--|
@@ -59,8 +69,9 @@
 |C6 |If queue is empty|T, F|
 |C7 |If queue is full|T, F|
 
-## [e]
-*  Define a test set that satisfies Base Choice Coverage (BCC). Write your tests with the values from the previous step. Be sure to include the test oracles. 
+<br/>
+
+#### **(e)** Define a test set that satisfies Base Choice Coverage (BCC). Write your tests with the values from the previous step. Be sure to include the test oracles. 
 
 | Method  | Characteristic | Base  | Test Requirements | Infeasible TRs |Revised TRs| # of TRs |
 |---------|----------------|-------|-------------------|----------------|-----------|----------|
@@ -70,7 +81,9 @@
 |  isEmpty   |  C2 C6      | {FF}  | {FF, TF, FT}      |{TF}            |           |2|
 |  isFull    |  C2 C7      | {FF}  | {FF, TF, FT}      |{TF}            |           |2|
 
-* Summary
+<br/>
+
+### **Summary**
 
 | Method  | Characteristic | Base  | Test Requirements | # of TRs |
 |---------|-----------------|------|-------------------|----------|
