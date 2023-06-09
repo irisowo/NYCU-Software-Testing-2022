@@ -68,9 +68,56 @@ class ThermostatTest {
     /*
      *  Clause Coverage
      */
+    @Test
+    void testCC_true(){
+        setClauses(true, true, true, true);
+        assertTrue(thermostat.turnHeaterOn(settings));
+    }
 
+    @Test
+    void testCC_false(){
+        setClauses(false, false, false, false);
+        assertFalse(thermostat.turnHeaterOn(settings));
+    }
 
+    
     /*
      *  Correlated Active Clause Coverage
      */
+
+    @Test
+    void testCACCPaT(){
+        setClauses(true, true, false, true);
+        assertTrue(thermostat.turnHeaterOn(settings));
+    }
+
+    @Test
+    void testCACCPaF(){
+        setClauses(false, true, false, true);
+        assertFalse(thermostat.turnHeaterOn(settings));
+    }
+
+    @Test
+    void testCACCPbT(){
+        setClauses(false, true, true, true);
+        assertTrue(thermostat.turnHeaterOn(settings));
+    }
+
+    @Test
+    void testCACCPbF(){
+        setClauses(false, false, true, true);
+        assertFalse(thermostat.turnHeaterOn(settings));
+    }
+
+    @Test
+    void testCACCPdT(){
+        setClauses(true, true, true, true);
+        assertTrue(thermostat.turnHeaterOn(settings));
+    }
+
+    @Test
+    void testCACCPdF(){
+        setClauses(true, true, true, false);
+        assertFalse(thermostat.turnHeaterOn(settings));
+    }
 }
